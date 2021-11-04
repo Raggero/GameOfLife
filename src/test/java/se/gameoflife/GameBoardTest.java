@@ -13,6 +13,7 @@ public class GameBoardTest {
     void callingGetNextGenerationWithNoAliveCellsReturnsNoAliveCells(){
         GameBoard gameBoard = new GameBoard();
         List<Cell> list= new ArrayList<>();
+        assertThat(gameBoard.getNextGeneration(list)).isEqualTo(list);
     }
 
 }
