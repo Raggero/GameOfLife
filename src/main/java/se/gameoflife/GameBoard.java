@@ -16,8 +16,8 @@ public class GameBoard {
         for (int i = 0; i < list.size(); i++) {
             neighbours = 0;
             for (int j= 0; j < list.size(); j++) {
-                int cellToCheck = list.get(i).row;
-                int potentialNeigbour = list.get(j).row;
+                int cellToCheck = list.get(i).column;
+                int potentialNeigbour = list.get(j).column;
                 if (potentialNeigbour == cellToCheck - 1 || potentialNeigbour == cellToCheck + 1) {
                     neighbours++;
                 }
