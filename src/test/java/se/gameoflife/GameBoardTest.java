@@ -26,4 +26,14 @@ public class GameBoardTest {
         assertThat(gameBoard.getNextGeneration(inBoundList)).isEqualTo(expectedList);
     }
 
+    @Test
+    void callingGetNextGenerationWithTwoAliveCellReturnsNoAliveCells(){
+
+        GameBoard gameBoard = new GameBoard();
+        List<Cell> inBoundList = new ArrayList<>(List.of(new Cell(0,0), new Cell(1,0)));
+        List<Cell> expectedList = new ArrayList<>();
+
+        assertThat(gameBoard.getNextGeneration(inBoundList)).isEqualTo(expectedList);
+    }
+
 }
