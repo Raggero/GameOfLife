@@ -33,4 +33,11 @@ public class Board {
     public int hashCode() {
         return Objects.hash(cellList);
     }
+
+    public Cell getCell(int row, int column) {
+        return cellList.stream()
+                .filter(cell -> cell.row == row && cell.column == column)
+                .findFirst()
+                .orElse(null);
+    }
 }

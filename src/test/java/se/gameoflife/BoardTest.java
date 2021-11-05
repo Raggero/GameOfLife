@@ -21,6 +21,14 @@ public class BoardTest {
     }
 
     @Test
+    void callingGetCellWithCorrectCoordinatesReturnsCell(){
+        Cell cell = new Cell(1,1);
+        Board board = new Board(new ArrayList<>(List.of(cell)));
+        board.getCell(1,1);
+        assertThat(board.getCell(1,1)).isEqualTo(cell);
+    }
+
+    @Test
     void callingEqualsWithTwoListContainingSameListReturnsTrue() {
         Cell cell1 = new Cell(1, 1);
         Cell cell2 = new Cell(1, 1);
