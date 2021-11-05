@@ -31,17 +31,19 @@ public class GameBoardTest {
         assertThat(gameBoard.getNextGeneration(inputBoard)).isEqualTo(expectedBoard);
     }
 
-  /*
+
     @Test
     void callingGetNextGenerationWithTwoAliveCellReturnsNoAliveCells(){
 
         GameBoard gameBoard = new GameBoard(3,3);
-        List<Cell> inBoundList = new ArrayList<>(List.of(new Cell(0,0), new Cell(1,0)));
-        List<Cell> expectedList = new ArrayList<>();
 
-        assertThat(gameBoard.getNextGeneration(inBoundList)).isEqualTo(expectedList);
+        Board inputBoard = new Board(new ArrayList<>(List.of(new Cell(0,0), new Cell(1,0))));
+
+        Board expectedBoard = new Board(new ArrayList<>());
+
+        assertThat(gameBoard.getNextGeneration(inputBoard)).isEqualTo(expectedBoard);
     }
-
+  /*
     @Test
     void callingGetNextGenerationWithThreeAliveCellsDiagonallyReturnsMiddleCellAlive(){
 
