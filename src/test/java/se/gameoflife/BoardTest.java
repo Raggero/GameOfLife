@@ -7,8 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class BoardTest {
+
+
+    @Test
+    void callingAddWithACellAddsCellToList(){
+        Board board = new Board();
+        Cell cell = new Cell(1, 1);
+        board.add(cell);
+        assertThat(board.cellList).contains(cell);
+    }
 
     @Test
     void callingEqualsWithTwoListContainingSameListReturnsTrue() {

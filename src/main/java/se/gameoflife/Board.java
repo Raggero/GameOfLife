@@ -1,5 +1,6 @@
 package se.gameoflife;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,8 +12,13 @@ public class Board {
         this.cellList = cellList;
     }
 
+    public Board() {
+        this.cellList = new ArrayList<>();
+    }
+
 
     public void add(Cell cell) {
+        cellList.add(cell);
     }
 
     @Override
