@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -31,5 +32,13 @@ public class ConsolePrinterTest {
         Board board = new Board(new ArrayList<>());
         consolePrinter.print(board);
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo(".");
+    }
+
+    @Test
+    void callingPrintPrintsABoardOf1x1WithXForAlive(){
+        ConsolePrinter printFile = new ConsolePrinter();
+        Board board = new Board(new ArrayList<>(List.of(new Cell(0,0))));
+        printFile.print(board);
+        assertThat(outputStreamCaptor.toString().trim()).isEqualTo("x");
     }
 }

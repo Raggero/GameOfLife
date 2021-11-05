@@ -3,7 +3,12 @@ package se.gameoflife;
 public class ConsolePrinter {
 
     public void print(Board board) {
-        System.out.println(".");
+        if(!board.getCellList().isEmpty()){
+            System.out.println("x");
+        }else{
+            System.out.println(".");
+        }
+
 
     }
 }
