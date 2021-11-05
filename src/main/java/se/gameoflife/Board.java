@@ -42,6 +42,10 @@ public class Board {
     }
 
     public int countCell(int row, int column) {
-        return 1;
+        return cellList.stream()
+                .filter(cell -> cell.row == row && cell.column == column)
+                .map(i -> 1)
+                .findFirst()
+                .orElse(0);
     }
 }

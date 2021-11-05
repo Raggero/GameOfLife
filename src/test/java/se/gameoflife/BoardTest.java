@@ -41,7 +41,12 @@ public class BoardTest {
         assertThat(board.countCell(1,1)).isEqualTo(1);
     }
 
-
+    @Test
+    void callingCountCellWithWrongCoordinatesReturnsZero(){
+        Cell cell = new Cell(1,1);
+        Board board = new Board(new ArrayList<>(List.of(cell)));
+        assertThat(board.countCell(2,2)).isZero();
+    }
 
 
     @Test
