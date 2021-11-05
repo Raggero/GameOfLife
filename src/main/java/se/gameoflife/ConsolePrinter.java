@@ -10,16 +10,18 @@ public class ConsolePrinter {
 
     public void print(Board board) {
         for (int i = 0; i < dimensions[0]; i++) {
-
             for (int j = 0; j < dimensions[1]; j++) {
-
-                if(board.countCell(i, j) == 1){
-                    System.out.print("x ");
-                }else{
-                    System.out.print(". ");
-                }
+                printCell(board, i, j);
             }
             System.out.println();
+        }
+    }
+
+    private void printCell(Board board, int i, int j) {
+        if(board.countCell(i, j) == 1){
+            System.out.print("x ");
+        }else{
+            System.out.print(". ");
         }
     }
 }
