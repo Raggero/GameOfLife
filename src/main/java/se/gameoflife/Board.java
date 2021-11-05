@@ -1,6 +1,7 @@
 package se.gameoflife;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Board {
     
@@ -12,5 +13,13 @@ public class Board {
 
 
     public void add(Cell cell) {
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Board board = (Board) o;
+        return Objects.equals(cellList, board.cellList);
     }
 }
