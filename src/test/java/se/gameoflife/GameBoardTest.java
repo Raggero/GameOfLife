@@ -37,39 +37,27 @@ public class GameBoardTest {
     }
 
     @Test
-    void callingGetNextGenerationWithThreeAliveCellsInARowReturnsMiddleCellAlive(){
+    void callingGetNextGenerationWithThreeAliveCellsDiagonallyReturnsMiddleCellAlive(){
 
         GameBoard gameBoard = new GameBoard();
-        Cell cell1 = new Cell(0,0);
-        Cell cell2 = new Cell(0,1);
-        Cell cell3 = new Cell(0,2);
+        Cell cell1 = new Cell(0,2);
+        Cell cell2 = new Cell(1,1);
+        Cell cell3 = new Cell(2,0);
         List<Cell> inBoundList = new ArrayList<>(List.of(cell1, cell2, cell3));
         List<Cell> expectedList = new ArrayList<>(List.of(cell2));
 
         assertThat(gameBoard.getNextGeneration(inBoundList)).isEqualTo(expectedList);
     }
     @Test
-    void callingGetNextGenerationWithThreeAliveCellsSeparatedReturnsNoALiveCells(){
-
-        GameBoard gameBoard = new GameBoard();
-        Cell cell1 = new Cell(0,0);
-        Cell cell2 = new Cell(0,3);
-        Cell cell3 = new Cell(1,0);
-        List<Cell> inBoundList = new ArrayList<>(List.of(cell1, cell2, cell3));
-        List<Cell> expectedList = new ArrayList<>();
-
-        assertThat(gameBoard.getNextGeneration(inBoundList)).isEqualTo(expectedList);
-    }
-
-    @Test
-    void callingGetNextGenerationWithThreeAliveCellsOnTwoRowsReturnsOneAliveCell(){
+    void callingGetNextGenerationWithFourAliveCellsSeparatedReturnsNoALiveCells(){
 
         GameBoard gameBoard = new GameBoard();
         Cell cell1 = new Cell(0,0);
         Cell cell2 = new Cell(0,2);
-        Cell cell3 = new Cell(1,1);
-        List<Cell> inBoundList = new ArrayList<>(List.of(cell1, cell2, cell3));
-        List<Cell> expectedList = new ArrayList<>(List.of(cell3));
+        Cell cell3 = new Cell(2,0);
+        Cell cell4 = new Cell(2,2);
+        List<Cell> inBoundList = new ArrayList<>(List.of(cell1, cell2, cell3, cell4));
+        List<Cell> expectedList = new ArrayList<>();
 
         assertThat(gameBoard.getNextGeneration(inBoundList)).isEqualTo(expectedList);
     }
