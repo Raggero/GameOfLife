@@ -5,6 +5,14 @@ import java.util.List;
 
 public class GameBoard {
 
+    int boardRows;
+    int boardColumns;
+
+    public GameBoard(int boardRows, int boardColumns) {
+        this.boardRows = boardRows;
+        this.boardColumns = boardColumns;
+    }
+
     public List<Cell> getNextGeneration(List<Cell> list) {
         if (list.size() < 3) {
             list.clear();
