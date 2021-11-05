@@ -18,4 +18,11 @@ public class CellTest {
         EqualsVerifier.simple().forClass(Cell.class).verify();
     }
 
+    @Test
+    void callingHashcodeOnTwoCellsWithSameParametersReturnsTrue(){
+        Cell cell1 = new Cell(1,1);
+        Cell cell2 = new Cell(1,1);
+        assertEquals(cell1.hashCode(), cell2.hashCode());
+    }
+
 }
