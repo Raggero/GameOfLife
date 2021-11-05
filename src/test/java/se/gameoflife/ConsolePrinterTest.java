@@ -28,7 +28,7 @@ public class ConsolePrinterTest {
 
     @Test
     void callingPrintPrintsDotForDead(){
-        int[] dimensions = {1,0};
+        int[] dimensions = {1,1};
         ConsolePrinter consolePrinter = new ConsolePrinter(dimensions);
         Board board = new Board(new ArrayList<>());
         consolePrinter.print(board);
@@ -37,7 +37,7 @@ public class ConsolePrinterTest {
 
     @Test
     void callingPrintPrintsXForAlive(){
-        int[] dimensions = {1,0};
+        int[] dimensions = {1,1};
         ConsolePrinter consolePrinter = new ConsolePrinter(dimensions);
         Board board = new Board(new ArrayList<>(List.of(new Cell(0,0))));
         consolePrinter.print(board);
