@@ -13,55 +13,55 @@ public class GameBoard {
         this.boardColumns = boardColumns;
     }
 
-    public List<Cell> getNextGeneration(List<Cell> list) {
-        if (list.size() < 3) {
-            list.clear();
-            return list;
+    public Board getNextGeneration(Board cellBoard) {
+        if (cellBoard.cellList.size() < 3) {
+            cellBoard.cellList.clear();
+            return cellBoard;
         }
-        List<Cell> nextGeneration = new ArrayList<>();
+        Board nextGeneration = new Board(new ArrayList<>());
         int neighbours;
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < cellBoard.cellList.size(); i++) {
 
             neighbours = 0;
 
-            for (int j = 0; j < list.size(); j++) {
+            for (int j = 0; j < cellBoard.cellList.size(); j++) {
 
-                if(list.get(j).row == list.get(i).row - 1){
-                    if(list.get(j).column == list.get(i).column - 1 ){
+                if(cellBoard.cellList.get(j).row == cellBoard.cellList.get(i).row - 1){
+                    if(cellBoard.cellList.get(j).column == cellBoard.cellList.get(i).column - 1 ){
                         neighbours++;
                     }
-                    if(list.get(j).column == list.get(i).column){
+                    if(cellBoard.cellList.get(j).column == cellBoard.cellList.get(i).column){
                         neighbours++;
                     }
-                    if(list.get(j).column == list.get(i).column +1 ){
+                    if(cellBoard.cellList.get(j).column == cellBoard.cellList.get(i).column +1 ){
                         neighbours++;
                     }
                 }
 
-                if(list.get(j).row == list.get(i).row){
-                    if (list.get(j).column == list.get(i).column -1){
+                if(cellBoard.cellList.get(j).row == cellBoard.cellList.get(i).row){
+                    if (cellBoard.cellList.get(j).column == cellBoard.cellList.get(i).column -1){
                         neighbours++;
                     }
-                    if(list.get(j).column == list.get(i).column +1){
+                    if(cellBoard.cellList.get(j).column == cellBoard.cellList.get(i).column +1){
                         neighbours++;
                     }
                 }
 
-                if(list.get(j).row == list.get(i).row +1){
-                    if(list.get(j).column == list.get(i).column -1){
+                if(cellBoard.cellList.get(j).row == cellBoard.cellList.get(i).row +1){
+                    if(cellBoard.cellList.get(j).column == cellBoard.cellList.get(i).column -1){
                         neighbours++;
                     }
-                    if(list.get(j).column == list.get(i).column){
+                    if(cellBoard.cellList.get(j).column == cellBoard.cellList.get(i).column){
                         neighbours++;
                     }
-                    if(list.get(i).column == list.get(i).column -1){
+                    if(cellBoard.cellList.get(i).column ==cellBoard.cellList.get(i).column -1){
                         neighbours++;
                     }
                 }
             }
 
             if (neighbours == 2 || neighbours == 3) {
-                nextGeneration.add(list.get(i));
+                nextGeneration.add(cellBoard.cellList.get(i));
             }
         }
         return nextGeneration;
