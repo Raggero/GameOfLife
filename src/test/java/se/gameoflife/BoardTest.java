@@ -25,5 +25,14 @@ public class BoardTest {
         EqualsVerifier.simple().forClass(Board.class).verify();
     }
 
+    @Test
+    void callingHashcodeOnTwoCellsWithSameParametersReturnsTrue(){
+        Cell cell1 = new Cell(1,1);
+        Cell cell2 = new Cell(1,1);
+        Board board1 = new Board(new ArrayList<>(List.of(cell1, cell2)));
+        Board board2 = new Board(new ArrayList<>(List.of(cell1, cell2)));
+        assertEquals(board1.hashCode(), board2.hashCode());
+    }
+
 
 }
