@@ -1,8 +1,5 @@
 package se.gameoflife;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class GameBoard {
 
     int boardRows;
@@ -21,7 +18,6 @@ public class GameBoard {
         Board nextGeneration = new Board();
         int neighbours;
         for (int row = 0; row < boardRows; row++) {
-
             for (int column = 0; column < boardColumns; column++) {
 
                 Cell cellToCheck = cellBoard.getCell(row, column);
@@ -35,8 +31,7 @@ public class GameBoard {
                     if (neighbours == 3) {
                         nextGeneration.add(new Cell(row, column));
                     }
-                }
-            }
+                }}
         }
         return nextGeneration;
     }
@@ -48,7 +43,6 @@ public class GameBoard {
         neighbours += cellBoard.countCell(row - 1, column);
 
         neighbours += cellBoard.countCell(row - 1, column + 1);
-
         neighbours += cellBoard.countCell(row, column - 1);
 
         neighbours += cellBoard.countCell(row, column + 1);

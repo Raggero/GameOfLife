@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Board {
-    
+
     List<Cell> cellList;
 
     public Board(List<Cell> cellList) {
@@ -16,22 +16,8 @@ public class Board {
         this.cellList = new ArrayList<>();
     }
 
-
     public void add(Cell cell) {
         cellList.add(cell);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Board board = (Board) o;
-        return Objects.equals(cellList, board.cellList);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(cellList);
     }
 
     public Cell getCell(int row, int column) {
@@ -47,5 +33,18 @@ public class Board {
                 .map(i -> 1)
                 .findFirst()
                 .orElse(0);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Board board = (Board) o;
+        return Objects.equals(cellList, board.cellList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cellList);
     }
 }
