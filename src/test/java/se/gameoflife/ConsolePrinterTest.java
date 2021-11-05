@@ -58,5 +58,25 @@ public class ConsolePrinterTest {
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo(expectedOutput);
     }
 
+    @Test
+    void callingPrintPrintsPrintsMixedCellsByPeriodOrXAndSpaceBetweenAndOnThreeRows(){
+        int[] dimensions = {3,3};
+        ConsolePrinter consolePrinter = new ConsolePrinter(dimensions);
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        Cell cell1 = new Cell(0,2);
+        Cell cell2 = new Cell(1, 0);
+        Cell cell3 = new Cell(2, 1);
+
+        Board board = new Board(new ArrayList<>(List.of(cell1, cell2, cell3)));
+
+        String expectedOutput = ". . x " + System.lineSeparator() +
+                "x . . " + System.lineSeparator() +
+                ". x .";
+        consolePrinter.print(board);
+
+        assertThat(outputStreamCaptor.toString().trim()).hasToString(expectedOutput);
+    }
+
 
 }

@@ -19,6 +19,7 @@ public class ConsolePrinter {
                     System.out.print(". ");
                 }
             }
+            System.out.println();
         }
     }
 }
