@@ -19,4 +19,9 @@ public class Cell {
         Cell cell = (Cell) o;
         return row == cell.row && column == cell.column;
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(row, column);
+    }
 }
