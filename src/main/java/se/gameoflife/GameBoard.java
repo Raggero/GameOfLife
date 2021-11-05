@@ -27,6 +27,9 @@ public class GameBoard {
             for (int column = 0; column < boardColumns; column++) {
 
                 Cell cellToCheck = cellBoard.getCell(row, column);
+                if(cellToCheck != null){
+                    neighbours = getNeighBours(cellBoard, row, column);
+                }
 
                 if(cellBoard.cellList.get(column).row == cellBoard.cellList.get(row).row - 1){
                     if(cellBoard.cellList.get(column).column == cellBoard.cellList.get(row).column - 1 ){
@@ -67,6 +70,26 @@ public class GameBoard {
             }
         }
         return nextGeneration;
+    }
+
+    private int getNeighBours(Board cellBoard, int row, int column) {
+        int neighbours = 0;
+        neighbours += cellBoard.countCell(row - 1, column - 1);
+
+        neighbours += cellBoard.countCell(row - 1, column);
+
+        neighbours += cellBoard.countCell(row - 1, column + 1);
+
+        neighbours += cellBoard.countCell(row, column - 1);
+
+        neighbours += cellBoard.countCell(row, column + 1);
+
+        neighbours += cellBoard.countCell(row + 1, column - 1);
+
+        neighbours += cellBoard.countCell(row + 1, column);
+
+        neighbours += cellBoard.countCell(row + 1, column + 1);
+        return neighbours;
     }
 
 }

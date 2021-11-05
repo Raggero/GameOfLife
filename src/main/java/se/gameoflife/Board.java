@@ -40,4 +40,8 @@ public class Board {
                 .findFirst()
                 .orElse(null);
     }
+
+    public int countCell(int row, int column) {
+        return 1;
+    }
 }
