@@ -82,10 +82,10 @@ public class GameBoardTest {
         GameBoard gameBoard = new GameBoard(3, 3);
         Cell cell1 = new Cell(0, 0);
         Cell cell2 = new Cell(0, 2);
-        Cell cell3 = new Cell(1, 1);
-        Cell cell4 = new Cell(0, 1);
+        Cell cell3 = new Cell(0, 1);
+        Cell cell4 = new Cell(1, 1);
 
-        Board inputBoard = new Board(new ArrayList<>(List.of(cell1, cell2, cell3)));
+        Board inputBoard = new Board(new ArrayList<>(List.of(cell1, cell2, cell4)));
 
         Board expectedBoard = new Board(new ArrayList<>(List.of(cell3, cell4)));
 

@@ -13,7 +13,7 @@ public class BoardTest {
 
 
     @Test
-    void callingAddWithACellAddsCellToList(){
+    void callingAddWithACellAddsCellToList() {
         Board board = new Board();
         Cell cell = new Cell(1, 1);
         board.add(cell);
@@ -21,33 +21,32 @@ public class BoardTest {
     }
 
     @Test
-    void callingGetCellWithCorrectCoordinatesReturnsCell(){
-        Cell cell = new Cell(1,1);
+    void callingGetCellWithCorrectCoordinatesReturnsCell() {
+        Cell cell = new Cell(1, 1);
         Board board = new Board(new ArrayList<>(List.of(cell)));
-        assertThat(board.getCell(1,1)).isEqualTo(cell);
+        assertThat(board.getCell(1, 1)).isEqualTo(cell);
     }
 
     @Test
-    void callingGetCellWithWrongCoordinatesReturnsNull(){
-        Cell cell = new Cell(1,1);
+    void callingGetCellWithWrongCoordinatesReturnsNull() {
+        Cell cell = new Cell(1, 1);
         Board board = new Board(new ArrayList<>(List.of(cell)));
-        assertThat(board.getCell(2,2)).isNull();
+        assertThat(board.getCell(2, 2)).isNull();
     }
 
     @Test
-    void callingCountCellWithCorrectCoordinatesReturnsOne(){
-        Cell cell = new Cell(1,1);
+    void callingCountCellWithCorrectCoordinatesReturnsOne() {
+        Cell cell = new Cell(1, 1);
         Board board = new Board(new ArrayList<>(List.of(cell)));
-        assertThat(board.countCell(1,1)).isEqualTo(1);
+        assertThat(board.countCell(1, 1)).isEqualTo(1);
     }
 
     @Test
-    void callingCountCellWithWrongCoordinatesReturnsZero(){
-        Cell cell = new Cell(1,1);
+    void callingCountCellWithWrongCoordinatesReturnsZero() {
+        Cell cell = new Cell(1, 1);
         Board board = new Board(new ArrayList<>(List.of(cell)));
-        assertThat(board.countCell(2,2)).isZero();
+        assertThat(board.countCell(2, 2)).isZero();
     }
-
 
     @Test
     void callingEqualsWithTwoListContainingSameListReturnsTrue() {
