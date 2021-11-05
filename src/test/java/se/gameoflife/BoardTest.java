@@ -1,5 +1,6 @@
 package se.gameoflife;
 
+import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -17,6 +18,11 @@ public class BoardTest {
         Board board2 = new Board(new ArrayList<>(List.of(cell1, cell2)));
 
         assertEquals(board1,board2);
+    }
+
+    @Test
+    void equalsContract(){
+        EqualsVerifier.simple().forClass(Board.class).verify();
     }
 
 

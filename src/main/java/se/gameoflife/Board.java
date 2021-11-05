@@ -22,4 +22,9 @@ public class Board {
         Board board = (Board) o;
         return Objects.equals(cellList, board.cellList);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cellList);
+    }
 }
