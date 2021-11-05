@@ -27,18 +27,36 @@ public class ConsolePrinterTest {
     }
 
     @Test
-    void callingPrintPrintsABoardOf1x1WithDotForDead(){
-        ConsolePrinter consolePrinter = new ConsolePrinter();
+    void callingPrintPrintsDotForDead(){
+        int[] dimensions = {1,0};
+        ConsolePrinter consolePrinter = new ConsolePrinter(dimensions);
         Board board = new Board(new ArrayList<>());
         consolePrinter.print(board);
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo(".");
     }
 
     @Test
-    void callingPrintPrintsABoardOf1x1WithXForAlive(){
-        ConsolePrinter printFile = new ConsolePrinter();
+    void callingPrintPrintsXForAlive(){
+        int[] dimensions = {1,0};
+        ConsolePrinter consolePrinter = new ConsolePrinter(dimensions);
         Board board = new Board(new ArrayList<>(List.of(new Cell(0,0))));
-        printFile.print(board);
+        consolePrinter.print(board);
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo("x");
     }
+
+    @Test
+    void callingPrintPrintsThreeDeadCellsByPeriodAndSpaceBetween(){
+        int[] dimensions = {1,3};
+        ConsolePrinter consolePrinter = new ConsolePrinter(dimensions);
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        Board board = new Board(new ArrayList<>());
+
+        String expectedOutput = ". . .";
+        consolePrinter.print(board);
+
+        assertThat(outputStreamCaptor.toString().trim()).isEqualTo(expectedOutput);
+    }
+
+
 }
