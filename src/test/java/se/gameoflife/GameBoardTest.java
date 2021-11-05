@@ -72,12 +72,10 @@ public class GameBoardTest {
         Board inputBoard = new Board(new ArrayList<>(List.of(cell1, cell2, cell3, cell4)));
 
         Board expectedBoard = new Board(new ArrayList<>());
-        List<Cell> inBoundList = new ArrayList<>(List.of(cell1, cell2, cell3, cell4));
-        List<Cell> expectedList = new ArrayList<>();
 
         assertThat(gameBoard.getNextGeneration(inputBoard)).isEqualTo(expectedBoard);
     }
-   /*
+
     @Test
     void callingGetNextGenerationWithThreeAliveCellsMakesOneCellComeAlive() {
 
@@ -86,10 +84,12 @@ public class GameBoardTest {
         Cell cell2 = new Cell(0, 2);
         Cell cell3 = new Cell(1, 1);
         Cell cell4 = new Cell(0, 1);
-        List<Cell> inBoundList = new ArrayList<>(List.of(cell1, cell2, cell3));
-        List<Cell> expectedList = new ArrayList<>(List.of(cell3, cell4));
 
-        assertThat(gameBoard.getNextGeneration(inBoundList)).hasSameElementsAs(expectedList);
-    }*/
+        Board inputBoard = new Board(new ArrayList<>(List.of(cell1, cell2, cell3)));
+
+        Board expectedBoard = new Board(new ArrayList<>(List.of(cell3, cell4)));
+
+        assertThat(gameBoard.getNextGeneration(inputBoard)).isEqualTo(expectedBoard);
+    }
 
 }
