@@ -33,11 +33,11 @@ public class GameBoardTest {
 
 
     @Test
-    void callingGetNextGenerationWithTwoAliveCellReturnsNoAliveCells(){
+    void callingGetNextGenerationWithTwoAliveCellReturnsNoAliveCells() {
 
-        GameBoard gameBoard = new GameBoard(3,3);
+        GameBoard gameBoard = new GameBoard(3, 3);
 
-        Board inputBoard = new Board(new ArrayList<>(List.of(new Cell(0,0), new Cell(1,0))));
+        Board inputBoard = new Board(new ArrayList<>(List.of(new Cell(0, 0), new Cell(1, 0))));
 
         Board expectedBoard = new Board(new ArrayList<>());
 
@@ -45,12 +45,12 @@ public class GameBoardTest {
     }
 
     @Test
-    void callingGetNextGenerationWithThreeAliveCellsDiagonallyReturnsMiddleCellAlive(){
+    void callingGetNextGenerationWithThreeAliveCellsDiagonallyReturnsMiddleCellAlive() {
 
-        GameBoard gameBoard = new GameBoard(3,3);
-        Cell cell1 = new Cell(0,2);
-        Cell cell2 = new Cell(1,1);
-        Cell cell3 = new Cell(2,0);
+        GameBoard gameBoard = new GameBoard(3, 3);
+        Cell cell1 = new Cell(0, 2);
+        Cell cell2 = new Cell(1, 1);
+        Cell cell3 = new Cell(2, 0);
 
         Board inputBoard = new Board(new ArrayList<>(List.of(cell1, cell2, cell3)));
 
@@ -61,13 +61,13 @@ public class GameBoardTest {
 
 
     @Test
-    void callingGetNextGenerationWithFourAliveCellsSeparatedReturnsNoALiveCells(){
+    void callingGetNextGenerationWithFourAliveCellsSeparatedReturnsNoALiveCells() {
 
-        GameBoard gameBoard = new GameBoard(3,3);
-        Cell cell1 = new Cell(0,0);
-        Cell cell2 = new Cell(0,2);
-        Cell cell3 = new Cell(2,0);
-        Cell cell4 = new Cell(2,2);
+        GameBoard gameBoard = new GameBoard(3, 3);
+        Cell cell1 = new Cell(0, 0);
+        Cell cell2 = new Cell(0, 2);
+        Cell cell3 = new Cell(2, 0);
+        Cell cell4 = new Cell(2, 2);
 
         Board inputBoard = new Board(new ArrayList<>(List.of(cell1, cell2, cell3, cell4)));
 

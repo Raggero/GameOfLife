@@ -13,11 +13,18 @@ public class BoardTest {
 
 
     @Test
+    void callingGetListReturnList(){
+        Cell cell = new Cell(1, 1);
+        Board board = new Board(new ArrayList<>(List.of(cell)));
+        assertThat(board.getCellList()).contains(cell);
+    }
+
+    @Test
     void callingAddWithACellAddsCellToList() {
         Board board = new Board();
         Cell cell = new Cell(1, 1);
         board.add(cell);
-        assertThat(board.cellList).contains(cell);
+        assertThat(board.getCellList()).contains(cell);
     }
 
     @Test

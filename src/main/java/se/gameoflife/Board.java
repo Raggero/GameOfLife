@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Board {
 
-    List<Cell> cellList;
+    private final List<Cell> cellList;
 
     public Board(List<Cell> cellList) {
         this.cellList = cellList;
@@ -35,6 +35,10 @@ public class Board {
                 .orElse(0);
     }
 
+    public List<Cell> getCellList() {
+        return cellList;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -47,4 +51,6 @@ public class Board {
     public int hashCode() {
         return Objects.hash(cellList);
     }
+
+
 }

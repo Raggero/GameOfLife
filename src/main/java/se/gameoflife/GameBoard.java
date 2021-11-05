@@ -11,27 +11,24 @@ public class GameBoard {
     }
 
     public Board getNextGeneration(Board cellBoard) {
-        if (cellBoard.cellList.size() < 3) {
-            cellBoard.cellList.clear();
-            return cellBoard;
-        }
         Board nextGeneration = new Board();
         int neighbours;
         for (int row = 0; row < boardRows; row++) {
             for (int column = 0; column < boardColumns; column++) {
 
                 Cell cellToCheck = cellBoard.getCell(row, column);
-                if(cellToCheck != null){
+                if (cellToCheck != null) {
                     neighbours = getNeighBours(cellBoard, row, column);
                     if (neighbours == 2 || neighbours == 3) {
                         nextGeneration.add(cellToCheck);
                     }
-                } else{
+                } else {
                     neighbours = getNeighBours(cellBoard, row, column);
                     if (neighbours == 3) {
                         nextGeneration.add(new Cell(row, column));
                     }
-                }}
+                }
+            }
         }
         return nextGeneration;
     }
