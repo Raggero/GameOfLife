@@ -8,14 +8,17 @@ public class GameOfLife {
 
     private final FileReader fileReader;
     private final GameLoader gameLoader;
+    private final ConsolePrinter consolePrinter;
 
-    public GameOfLife(FileReader fileReader, GameLoader gameLoader) {
+    public GameOfLife(FileReader fileReader, GameLoader gameLoader, ConsolePrinter consolePrinter) {
         this.fileReader = fileReader;
         this.gameLoader = gameLoader;
+        this.consolePrinter = consolePrinter;
     }
 
     public void startGame() {
         List<String> fileList = fileReader.readFile(file);
-        gameLoader.loadGame(fileList);
+        Board board = gameLoader.loadGame(fileList);
+        consolePrinter.print(board, gameLoader.getDimensions());
     }
 }

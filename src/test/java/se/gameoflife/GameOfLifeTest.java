@@ -13,8 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class GameOfLifeTest {
@@ -27,6 +26,9 @@ public class GameOfLifeTest {
     @Mock
     GameLoader mockedGameLoader;
 
+    @Mock
+    ConsolePrinter mockedConsolePrinter;
+
     @Captor
     ArgumentCaptor<String> stringCaptor;
 
@@ -35,13 +37,14 @@ public class GameOfLifeTest {
 
     @BeforeEach
     public void setUp(){
-        gameOfLife = new GameOfLife(mockedFileReader, mockedGameLoader);
+        gameOfLife = new GameOfLife(mockedFileReader, mockedGameLoader, mockedConsolePrinter);
     }
 
     @Test
     void callingStartGameCallsReadFile() {
         when(mockedFileReader.readFile(Mockito.anyString())).thenReturn(Mockito.any());
         gameOfLife.startGame();
+
         verify(mockedFileReader).readFile(Mockito.anyString());
     }
 
@@ -49,8 +52,8 @@ public class GameOfLifeTest {
     void callingStartGameCallsReadFileWithCorrectArgument() {
         String path = "src/main/resources/gameoflife.txt";
         when(mockedFileReader.readFile(path)).thenReturn(Mockito.any());
-
         gameOfLife.startGame();
+
         verify(mockedFileReader).readFile(stringCaptor.capture());
         String capturedArgument = stringCaptor.getValue();
         assertThat(capturedArgument).isEqualTo(path);
@@ -60,6 +63,7 @@ public class GameOfLifeTest {
     void callingStartGameCallsLoadGame() {
         when(mockedGameLoader.loadGame(Mockito.anyList())).thenReturn(Mockito.any());
         gameOfLife.startGame();
+
         verify(mockedFileReader).readFile(Mockito.anyString());
     }
 
@@ -68,11 +72,19 @@ public class GameOfLifeTest {
         List<String> strings = new ArrayList<>(List.of("1,3", "x . x"));
         when(mockedFileReader.readFile(Mockito.anyString())).thenReturn(strings);
         when(mockedGameLoader.loadGame(strings)).thenReturn(Mockito.any());
-
         gameOfLife.startGame();
+
         verify(mockedGameLoader).loadGame(listArgumentCaptor.capture());
         List<String> capturedArgument = listArgumentCaptor.getValue();
         assertThat(capturedArgument).isEqualTo(strings);
+    }
+
+    @Test
+    void callingStartGameCallsPrint() {
+        doNothing().when(mockedConsolePrinter).print(Mockito.any(), Mockito.any());
+        gameOfLife.startGame();
+
+        verify(mockedConsolePrinter).print(Mockito.any(), Mockito.any());
     }
 
 
