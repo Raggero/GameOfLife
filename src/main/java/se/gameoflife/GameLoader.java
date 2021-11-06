@@ -8,18 +8,19 @@ public class GameLoader {
     int[] dimensions;
 
     public void loadDimensions(List<String> stringList) {
-        String[] stringDimenstions = stringList.get(0).split(",");
-        Arrays.stream(stringDimenstions)
+        String[] stringDimensions = stringList.get(0).split(",");
+        dimensions = Arrays.stream(stringDimensions)
                 .mapToInt(Integer::parseInt)
                 .toArray();
 
     }
 
     public Board loadBoard(List<String> stringList) {
+        loadDimensions(stringList);
         Board board = new Board();
         for (int i = 0; i < dimensions[0]; i++) {
             String[] cell = stringList.get(i + 1).trim().split(" ");
-            for (int j = 0; j < dimensions[i]; j++) {
+            for (int j = 0; j < dimensions[1]; j++) {
                 if(cell[j].equals("x")){
                     board.add(new Cell(i,j));
                 }
