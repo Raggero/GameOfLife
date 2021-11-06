@@ -7,7 +7,7 @@ public class GameLoader {
 
     int[] dimensions;
 
-    public void loadDimensions(List<String> stringList) {
+    private void loadDimensions(List<String> stringList) {
         String[] stringDimensions = stringList.get(0).split(",");
         dimensions = Arrays.stream(stringDimensions)
                 .mapToInt(Integer::parseInt)
@@ -15,14 +15,16 @@ public class GameLoader {
 
     }
 
-    public Board loadBoard(List<String> stringList) {
+    public Board loadGame(List<String> stringList) {
         loadDimensions(stringList);
         Board board = new Board();
-        for (int i = 0; i < dimensions[0]; i++) {
-            String[] cell = stringList.get(i + 1).trim().split(" ");
-            for (int j = 0; j < dimensions[1]; j++) {
-                if(cell[j].equals("x")){
-                    board.add(new Cell(i,j));
+        if(stringList.size() > 1){
+            for (int i = 0; i < dimensions[0]; i++) {
+                String[] cell = stringList.get(i + 1).trim().split(" ");
+                for (int j = 0; j < dimensions[1]; j++) {
+                    if(cell[j].equals("x")){
+                        board.add(new Cell(i,j));
+                    }
                 }
             }
         }
