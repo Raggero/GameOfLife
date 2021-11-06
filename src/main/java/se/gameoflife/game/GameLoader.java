@@ -23,7 +23,7 @@ public class GameLoader {
             String[] cell = stringList.get(i + 1).trim().split(" ");
             for (int j = 0; j < dimensions[1]; j++) {
                 if (cell[j].equals("x")) {
-                    board.add(new Cell(i, j));
+                    board.addCell(new Cell(i, j));
                 }
             }
         }

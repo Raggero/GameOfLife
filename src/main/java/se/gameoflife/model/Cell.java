@@ -12,6 +12,14 @@ public class Cell {
         this.column = column;
     }
 
+    public int getRow() {
+        return row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -23,5 +31,13 @@ public class Cell {
     @Override
     public int hashCode() {
         return Objects.hash(row, column);
+    }
+
+    @Override
+    public String toString() {
+        return "Cell{" +
+                "row=" + row +
+                ", column=" + column +
+                '}';
     }
 }

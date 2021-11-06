@@ -19,10 +19,10 @@ class BoardTest {
     }
 
     @Test
-    void callingAddWithACellAddsCellToList() {
+    void callingAddCellWithCellAddsCellToList() {
         Cell cell = new Cell(1, 1);
         Board board = new Board();
-        board.add(cell);
+        board.addCell(cell);
         assertThat(board.getCellList()).contains(cell);
     }
 

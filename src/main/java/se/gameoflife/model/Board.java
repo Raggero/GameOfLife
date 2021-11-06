@@ -16,7 +16,7 @@ public class Board {
         this.cellList = new ArrayList<>();
     }
 
-    public void add(Cell cell) {
+    public void addCell(Cell cell) {
         cellList.add(cell);
     }
 
@@ -52,5 +52,10 @@ public class Board {
         return Objects.hash(cellList);
     }
 
-
+    @Override
+    public String toString() {
+        return "Board{" +
+                "cellList=" + cellList +
+                '}';
+    }
 }

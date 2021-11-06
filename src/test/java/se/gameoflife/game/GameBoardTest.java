@@ -88,7 +88,7 @@ class GameBoardTest {
         Board inputBoard = new Board(new ArrayList<>(List.of(cell1, cell2, cell4)));
         Board expectedBoard = new Board(new ArrayList<>(List.of(cell3, cell4)));
 
-        assertThat(gameBoard.getNextGeneration(inputBoard, dimensions)).isEqualTo(expectedBoard);
+        assertThat(gameBoard.getNextGeneration(inputBoard, dimensions)).usingRecursiveComparison().ignoringCollectionOrder().isEqualTo(expectedBoard);
     }
 
     @Test
@@ -126,6 +126,6 @@ class GameBoardTest {
         Board inBoard = new Board(new ArrayList<>(List.of(cell2, cell4, cell5, cell6, cell8)));
         Board expectedBoard = new Board(new ArrayList<>(List.of(cell1, cell2, cell3, cell4, cell6, cell7, cell8, cell9)));
 
-        assertThat(gameBoard.getNextGeneration(inBoard, dimensions)).isEqualTo(expectedBoard);
+        assertThat(gameBoard.getNextGeneration(inBoard, dimensions)).usingRecursiveComparison().ignoringCollectionOrder().isEqualTo(expectedBoard);
     }
 }
