@@ -2,7 +2,6 @@ package se.gameoflife.game;
 
 import se.gameoflife.model.Board;
 import se.gameoflife.model.Cell;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,40 +22,39 @@ public class GameBoard {
                 .collect(Collectors.toList());
     }
 
-    private void getBirths(Board board, int[] dimensions, List<Cell> nextGen) {
-        int neighbors;
+    private void getBirths(Board board, int[] dimensions, List<Cell> nextGeneration) {
         for (int i = 0; i < dimensions[0]; i++) {
             for (int j = 0; j < dimensions[1]; j++) {
-                if(board.countCell(i, j) == 0){
-                    neighbors = getNeighbors(board, i, j);
-                    addBirth(nextGen, neighbors, i, j);
+                if(board.getCell(i, j) == 0){
+                    int neighbors = getNeighbors(board, i, j);
+                    addBirth(nextGeneration, neighbors, i, j);
                 }
             }
         }
     }
 
-    private void addBirth(List<Cell> nextGen, int neighbors, int i, int j) {
+    private void addBirth(List<Cell> nextGeneration, int neighbors, int i, int j) {
         if (neighbors == 3) {
-            nextGen.add(new Cell(i, j));
+            nextGeneration.add(new Cell(i, j));
         }
     }
 
     private int getNeighbors(Board board, int row, int column) {
         int neighbors = 0;
-        neighbors += board.countCell(row - 1, column - 1);
+        neighbors += board.getCell(row - 1, column - 1);
 
-        neighbors += board.countCell(row - 1, column);
+        neighbors += board.getCell(row - 1, column);
 
-        neighbors += board.countCell(row - 1, column + 1);
-        neighbors += board.countCell(row, column - 1);
+        neighbors += board.getCell(row - 1, column + 1);
+        neighbors += board.getCell(row, column - 1);
 
-        neighbors += board.countCell(row, column + 1);
+        neighbors += board.getCell(row, column + 1);
 
-        neighbors += board.countCell(row + 1, column - 1);
+        neighbors += board.getCell(row + 1, column - 1);
 
-        neighbors += board.countCell(row + 1, column);
+        neighbors += board.getCell(row + 1, column);
 
-        neighbors += board.countCell(row + 1, column + 1);
+        neighbors += board.getCell(row + 1, column + 1);
         return neighbors;
     }
 }

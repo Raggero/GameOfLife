@@ -27,17 +27,17 @@ class BoardTest {
     }
 
     @Test
-    void callingCountCellWithCorrectCoordinatesReturnsOne() {
+    void callingGetCellWithCorrectCoordinatesReturnsOne() {
         Cell cell = new Cell(1, 1);
         Board board = new Board(new ArrayList<>(List.of(cell)));
-        assertThat(board.countCell(1, 1)).isEqualTo(1);
+        assertThat(board.getCell(1, 1)).isEqualTo(1);
     }
 
     @Test
-    void callingCountCellWithWrongCoordinatesReturnsZero() {
+    void callingGetCellWithWrongCoordinatesReturnsZero() {
         Cell cell = new Cell(1, 1);
         Board board = new Board(new ArrayList<>(List.of(cell)));
-        assertThat(board.countCell(2, 2)).isZero();
+        assertThat(board.getCell(2, 2)).isZero();
     }
 
     @Test

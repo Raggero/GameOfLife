@@ -20,7 +20,7 @@ public class Board {
         cellList.add(cell);
     }
 
-    public int countCell(int row, int column) {
+    public int getCell(int row, int column) {
         return cellList.stream()
                 .filter(cell -> cell.row == row && cell.column == column)
                 .map(i -> 1)

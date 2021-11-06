@@ -14,6 +14,6 @@ public class ConsolePrinter {
     }
 
     private String printCell(Board board, int i, int j) {
-        return (board.countCell(i, j)) == 1 ? "x " : ". ";
+        return (board.getCell(i, j)) == 1 ? "x " : ". ";
     }
 }
