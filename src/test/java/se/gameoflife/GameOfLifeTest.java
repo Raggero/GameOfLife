@@ -20,9 +20,12 @@ public class GameOfLifeTest {
     @Mock
     FileReader mockedFileReader;
 
+    @Mock
+    GameLoader mockedGameLoader;
+
     @BeforeEach
     public void setUp(){
-        gameOfLife = new GameOfLife(mockedFileReader);
+        gameOfLife = new GameOfLife(mockedFileReader, mockedGameLoader);
     }
 
     @Test
@@ -42,6 +45,13 @@ public class GameOfLifeTest {
         verify(mockedFileReader).readFile(stringCaptor.capture());
         String capturedArgument = stringCaptor.getValue();
         assertThat(capturedArgument).isEqualTo(path);
+    }
+
+    @Test
+    void callingStartGameCallsLoadGame() {
+        when(mockedGameLoader.loadGame(Mockito.anyList())).thenReturn(Mockito.any());
+        gameOfLife.startGame();
+        verify(mockedFileReader).readFile(Mockito.anyString());
     }
 
 
