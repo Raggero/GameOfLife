@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import se.gameoflife.model.Board;
 import se.gameoflife.model.Cell;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ class GameBoardTest {
 
     @Test
     void callingGetNextGenerationWithNoAliveCellsReturnsNoAliveCells() {
-        int[] dimensions = {1,1};
+        int[] dimensions = {1, 1};
 
         Board inputBoard = new Board();
         Board expectedBoard = new Board();
@@ -30,7 +31,7 @@ class GameBoardTest {
 
     @Test
     void callingGetNextGenerationWithOneAliveCellReturnsNoAliveCells() {
-        int[] dimensions = {1,1};
+        int[] dimensions = {1, 1};
 
         Board inputBoard = new Board(new ArrayList<>(List.of(new Cell(0, 0))));
         Board expectedBoard = new Board();
@@ -41,7 +42,7 @@ class GameBoardTest {
 
     @Test
     void callingGetNextGenerationWithTwoAliveCellReturnsNoAliveCells() {
-        int[] dimensions = {1,2};
+        int[] dimensions = {1, 2};
 
         Board inputBoard = new Board(new ArrayList<>(List.of(new Cell(0, 0), new Cell(1, 0))));
         Board expectedBoard = new Board();
@@ -51,7 +52,7 @@ class GameBoardTest {
 
     @Test
     void callingGetNextGenerationWithThreeAliveCellsDiagonallyReturnsMiddleCellAlive() {
-        int[] dimensions = {3,3};
+        int[] dimensions = {3, 3};
         Cell cell1 = new Cell(0, 2);
         Cell cell2 = new Cell(1, 1);
         Cell cell3 = new Cell(2, 0);
@@ -65,7 +66,7 @@ class GameBoardTest {
 
     @Test
     void callingGetNextGenerationWithFourAliveCellsSeparatedReturnsNoALiveCells() {
-        int[] dimensions = {3,3};
+        int[] dimensions = {3, 3};
         Cell cell1 = new Cell(0, 0);
         Cell cell2 = new Cell(0, 2);
         Cell cell3 = new Cell(2, 0);
@@ -79,7 +80,7 @@ class GameBoardTest {
 
     @Test
     void callingGetNextGenerationWithThreeAliveCellsMakesOneDeadCellComeAlive() {
-        int[] dimensions = {3,3};
+        int[] dimensions = {3, 3};
         Cell cell1 = new Cell(0, 0);
         Cell cell2 = new Cell(0, 2);
         Cell cell3 = new Cell(0, 1);
@@ -93,7 +94,7 @@ class GameBoardTest {
 
     @Test
     void callingGetNextGenerationWithAllAliveCellsOnBoardReturnsExpectedResult() {
-        int[] dimensions = {3,3};
+        int[] dimensions = {3, 3};
         Cell cell1 = new Cell(0, 0);
         Cell cell2 = new Cell(0, 1);
         Cell cell3 = new Cell(0, 2);
@@ -112,7 +113,7 @@ class GameBoardTest {
 
     @Test
     void callingGetNextGenerationWithFiveAliveCellsReturnsExpectedResult() {
-        int[] dimensions = {3,3};
+        int[] dimensions = {3, 3};
         Cell cell1 = new Cell(0, 0);
         Cell cell2 = new Cell(0, 1);
         Cell cell3 = new Cell(0, 2);

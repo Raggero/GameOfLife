@@ -2,6 +2,7 @@ package se.gameoflife.game;
 
 import se.gameoflife.model.Board;
 import se.gameoflife.model.Cell;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,7 +14,7 @@ public class GameBoard {
         return new Board(nextGeneration);
     }
 
-    private List<Cell> getSurvivingCells(Board board){
+    private List<Cell> getSurvivingCells(Board board) {
         return board.getCellList().stream()
                 .filter(cell -> {
                     int neighbors = getNeighbors(board, cell.getRow(), cell.getColumn());
@@ -25,7 +26,7 @@ public class GameBoard {
     private void getBirths(Board board, int[] dimensions, List<Cell> nextGeneration) {
         for (int i = 0; i < dimensions[0]; i++) {
             for (int j = 0; j < dimensions[1]; j++) {
-                if(board.getCell(i, j) == 0){
+                if (board.getCell(i, j) == 0) {
                     int neighbors = getNeighbors(board, i, j);
                     addBirth(nextGeneration, neighbors, i, j);
                 }

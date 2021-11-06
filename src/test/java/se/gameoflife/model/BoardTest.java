@@ -10,7 +10,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class BoardTest {
 
-
     @Test
     void callingGetListReturnList(){
         Cell cell = new Cell(1, 1);

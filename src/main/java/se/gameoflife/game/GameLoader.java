@@ -2,12 +2,13 @@ package se.gameoflife.game;
 
 import se.gameoflife.model.Board;
 import se.gameoflife.model.Cell;
+
 import java.util.Arrays;
 import java.util.List;
 
 public class GameLoader {
 
-     private int[] dimensions;
+    private int[] dimensions;
 
     public Board loadGame(List<String> stringList) {
         loadDimensions(stringList);
