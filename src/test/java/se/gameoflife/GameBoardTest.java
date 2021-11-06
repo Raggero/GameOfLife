@@ -22,6 +22,7 @@ class GameBoardTest {
 
         Board inputBoard = new Board();
         Board expectedBoard = new Board();
+
         assertThat(gameBoard.getNextGeneration(inputBoard, dimensions)).isEqualTo(expectedBoard);
     }
 
@@ -30,7 +31,6 @@ class GameBoardTest {
         int[] dimensions = {1,1};
 
         Board inputBoard = new Board(new ArrayList<>(List.of(new Cell(0, 0))));
-
         Board expectedBoard = new Board();
 
         assertThat(gameBoard.getNextGeneration(inputBoard, dimensions)).isEqualTo(expectedBoard);
@@ -42,7 +42,6 @@ class GameBoardTest {
         int[] dimensions = {1,2};
 
         Board inputBoard = new Board(new ArrayList<>(List.of(new Cell(0, 0), new Cell(1, 0))));
-
         Board expectedBoard = new Board();
 
         assertThat(gameBoard.getNextGeneration(inputBoard, dimensions)).isEqualTo(expectedBoard);
@@ -56,7 +55,6 @@ class GameBoardTest {
         Cell cell3 = new Cell(2, 0);
 
         Board inputBoard = new Board(new ArrayList<>(List.of(cell1, cell2, cell3)));
-
         Board expectedBoard = new Board(new ArrayList<>(List.of(cell2)));
 
         assertThat(gameBoard.getNextGeneration(inputBoard, dimensions)).isEqualTo(expectedBoard);
@@ -72,7 +70,6 @@ class GameBoardTest {
         Cell cell4 = new Cell(2, 2);
 
         Board inputBoard = new Board(new ArrayList<>(List.of(cell1, cell2, cell3, cell4)));
-
         Board expectedBoard = new Board();
 
         assertThat(gameBoard.getNextGeneration(inputBoard, dimensions)).isEqualTo(expectedBoard);
@@ -87,7 +84,6 @@ class GameBoardTest {
         Cell cell4 = new Cell(1, 1);
 
         Board inputBoard = new Board(new ArrayList<>(List.of(cell1, cell2, cell4)));
-
         Board expectedBoard = new Board(new ArrayList<>(List.of(cell3, cell4)));
 
         assertThat(gameBoard.getNextGeneration(inputBoard, dimensions)).isEqualTo(expectedBoard);
@@ -107,7 +103,6 @@ class GameBoardTest {
         Cell cell9 = new Cell(2, 2);
 
         Board inBoard = new Board(new ArrayList<>(List.of(cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9)));
-
         Board expectedBoard = new Board(new ArrayList<>(List.of(cell1, cell3, cell7, cell9)));
 
         assertThat(gameBoard.getNextGeneration(inBoard, dimensions)).isEqualTo(expectedBoard);
@@ -127,7 +122,6 @@ class GameBoardTest {
         Cell cell9 = new Cell(2, 2);
 
         Board inBoard = new Board(new ArrayList<>(List.of(cell2, cell4, cell5, cell6, cell8)));
-
         Board expectedBoard = new Board(new ArrayList<>(List.of(cell1, cell2, cell3, cell4, cell6, cell7, cell8, cell9)));
 
         assertThat(gameBoard.getNextGeneration(inBoard, dimensions)).isEqualTo(expectedBoard);
