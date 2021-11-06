@@ -2,21 +2,13 @@ package se.gameoflife;
 
 public class GameBoard {
 
-    int boardRows;
-    int boardColumns;
-
     Board nextGeneration;
 
-    public GameBoard(int boardRows, int boardColumns) {
-        this.boardRows = boardRows;
-        this.boardColumns = boardColumns;
-    }
-
-    public Board getNextGeneration(Board cellBoard) {
+    public Board getNextGeneration(Board cellBoard, int[] dimensions) {
         nextGeneration = new Board();
         int neighbours;
-        for (int row = 0; row < boardRows; row++) {
-            for (int column = 0; column < boardColumns; column++) {
+        for (int row = 0; row < dimensions[0]; row++) {
+            for (int column = 0; column < dimensions[1]; column++) {
                 neighbours = getNeighBours(cellBoard, row, column);
                 createNextGeneration(cellBoard, neighbours, row, column);
             }
