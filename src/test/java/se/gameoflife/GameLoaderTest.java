@@ -27,6 +27,15 @@ public class GameLoaderTest {
         assertThat(dimensions).isEqualTo(expected);
     }
 
+    @Test
+    void callingLoadBoardWithNoAliveCellsReturnsBoardWithEmptyList() {
+        GameLoader gameLoader = new GameLoader();
+        List<String> strings = new ArrayList<>(List.of("1,1", "."));
+        Board board = gameLoader.loadBoard(strings);
+        Board expected = new Board();
+        assertThat(board).isEqualTo(expected);
+    }
+
 
 
 

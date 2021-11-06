@@ -12,4 +12,8 @@ public class GameLoader {
                 .toArray();
 
     }
+
+    public Board loadBoard(List<String> strings) {
+        return new Board();
+    }
 }
