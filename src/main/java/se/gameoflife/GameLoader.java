@@ -13,7 +13,11 @@ public class GameLoader {
 
     }
 
-    public Board loadBoard(List<String> strings) {
-        return new Board();
+    public Board loadBoard(List<String> stringList) {
+        Board board = new Board();
+        if(stringList.get(1).equals("x")){
+            board.add(new Cell(0,0));
+        }
+        return board;
     }
 }

@@ -36,7 +36,14 @@ public class GameLoaderTest {
         assertThat(board).isEqualTo(expected);
     }
 
-
+    @Test
+    void callingLoadBoardWithOneAliveCellsReturnsBoardWithOneCellInList() {
+        GameLoader gameLoader = new GameLoader();
+        List<String> strings = new ArrayList<>(List.of("1,1", "x"));
+        Board board = gameLoader.loadBoard(strings);
+        Board expected = new Board(new ArrayList<>(List.of(new Cell(0,0))));
+        assertThat(board).isEqualTo(expected);
+    }
 
 
 }
