@@ -19,7 +19,7 @@ class GameLoaderTest {
     }
 
     @Test
-    void callingLoadDimensionsReturnsDimensionsToOneOne() {
+    void callingLoadGameSetsDimensionsToOneOne() {
         List<String> strings = new ArrayList<>(List.of("1,1"));
         int[] expected = {1,1};
 
@@ -29,7 +29,7 @@ class GameLoaderTest {
     }
 
     @Test
-    void callingLoadDimensionsReturnsDimensionsToThreeThree() {
+    void callingLoadGameSetsDimensionsToThreeThree() {
         List<String> strings = new ArrayList<>(List.of("3,3"));
         int[] expected = {3,3 };
 
@@ -39,7 +39,7 @@ class GameLoaderTest {
     }
 
     @Test
-    void callingLoadBoardWithNoAliveCellsReturnsBoardWithEmptyList() {
+    void callingLoadGameWithOneDeadCellByDotReturnsBoardWithEmptyList() {
         List<String> strings = new ArrayList<>(List.of("1,1", "."));
 
         Board expected = new Board();
@@ -48,7 +48,7 @@ class GameLoaderTest {
     }
 
     @Test
-    void callingLoadBoardWithOneAliveCellsReturnsBoardWithOneCellInList() {
+    void callingLoadGameWithOneAliveCellByXReturnsBoardWithOneAliveCell() {
         List<String> strings = new ArrayList<>(List.of("1,1", "x"));
 
         Board expected = new Board(new ArrayList<>(List.of(new Cell(0,0))));
@@ -57,7 +57,7 @@ class GameLoaderTest {
     }
 
     @Test
-    void callingLoadBoardWithTwoAliveCellsWithOneDeadInBetweenReturnsBoardWithTwoCellInList() {
+    void callingLoadGameWithTwoAliveCellsXWithOneDeadInBetweenReturnsBoardWithTwoAliveCells() {
         List<String> strings = new ArrayList<>(List.of("1,3", "x . x"));
 
         Board expected = new Board(new ArrayList<>(List.of(new Cell(0,0), new Cell(0,2))));
@@ -66,7 +66,7 @@ class GameLoaderTest {
     }
 
     @Test
-    void callingLoadBoardWithMixedCellsReturnsExpectedBoard() {
+    void callingLoadGameWithAMixOfAliveAndDeadCellsReturnsExpectedBoard() {
         List<String> strings = new ArrayList<>(List.of("3,3", "x x .", ". . x","x . x"));
         Cell cell1 = new Cell(0,0);
         Cell cell2 = new Cell(0,1);

@@ -78,7 +78,7 @@ class GameBoardTest {
     }
 
     @Test
-    void callingGetNextGenerationWithThreeAliveCellsMakesOneCellComeAlive() {
+    void callingGetNextGenerationWithThreeAliveCellsMakesOneDeadCellComeAlive() {
         int[] dimensions = {3,3};
         Cell cell1 = new Cell(0, 0);
         Cell cell2 = new Cell(0, 2);
