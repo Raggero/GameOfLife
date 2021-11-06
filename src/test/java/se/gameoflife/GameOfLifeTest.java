@@ -93,7 +93,7 @@ public class GameOfLifeTest {
         doNothing().when(mockedConsolePrinter).print(Mockito.any(), Mockito.any());
         gameOfLife.startGame();
 
-        verify(mockedConsolePrinter).print(Mockito.any(), Mockito.any());
+        verify(mockedConsolePrinter, atLeastOnce()).print(Mockito.any(), Mockito.any());
     }
 
     @Test
@@ -104,10 +104,11 @@ public class GameOfLifeTest {
         when(mockedFileReader.readFile(Mockito.anyString())).thenReturn(strings);
         when(mockedGameLoader.loadGame(strings)).thenReturn(board);
         when(mockedGameLoader.getDimensions()).thenReturn(dimensions);
+        when(mockedGameBoard.getNextGeneration(Mockito.any(), Mockito.any())).thenReturn(board);
         doNothing().when(mockedConsolePrinter).print(Mockito.any(), Mockito.any());
         gameOfLife.startGame();
 
-        verify(mockedConsolePrinter).print(boardCaptor.capture(), (int[]) arrayCaptor.capture());
+        verify(mockedConsolePrinter, atLeastOnce()).print(boardCaptor.capture(), (int[]) arrayCaptor.capture());
         Board capturedArgument = boardCaptor.getValue();
         int[] secondCapturedArgument = (int[]) arrayCaptor.getValue();
         assertThat(capturedArgument).isEqualTo(board);
@@ -119,7 +120,7 @@ public class GameOfLifeTest {
         when(mockedGameBoard.getNextGeneration(Mockito.any(), Mockito.any())).thenReturn(Mockito.any());
         gameOfLife.startGame();
 
-        verify(mockedGameBoard).getNextGeneration(Mockito.any(), Mockito.any());
+        verify(mockedGameBoard, atLeastOnce()).getNextGeneration(Mockito.any(), Mockito.any());
     }
 
     @Test
@@ -136,7 +137,7 @@ public class GameOfLifeTest {
         when(mockedGameBoard.getNextGeneration(board, dimensions)).thenReturn(board2);
         gameOfLife.startGame();
 
-        verify(mockedGameBoard).getNextGeneration(boardCaptor.capture(), (int[]) arrayCaptor.capture());
+        verify(mockedGameBoard, atLeastOnce()).getNextGeneration(boardCaptor.capture(), (int[]) arrayCaptor.capture());
         Board capturedArgument = boardCaptor.getValue();
         int[] secondCapturedArgument = (int[]) arrayCaptor.getValue();
         assertThat(capturedArgument).isEqualTo(board);
