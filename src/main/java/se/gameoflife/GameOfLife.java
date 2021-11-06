@@ -1,5 +1,7 @@
 package se.gameoflife;
 
+import java.util.List;
+
 public class GameOfLife {
 
     private static final String file = "src/main/resources/gameoflife.txt";
@@ -13,7 +15,7 @@ public class GameOfLife {
     }
 
     public void startGame() {
-
-        gameLoader.loadGame(fileReader.readFile(file));
+        List<String> fileList = fileReader.readFile(file);
+        gameLoader.loadGame(fileList);
     }
 }
