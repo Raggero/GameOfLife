@@ -31,7 +31,7 @@ class ConsolePrinterTest {
     }
 
     @Test
-    void callingPrintPrintsDotForDead(){
+    void callingPrintPrintsADotForOneDeadCell(){
         int[] dimensions = {1,1};
         Board board = new Board(new ArrayList<>());
         consolePrinter.print(board, dimensions);
@@ -40,7 +40,7 @@ class ConsolePrinterTest {
     }
 
     @Test
-    void callingPrintPrintsXForAlive(){
+    void callingPrintPrintsXForOneAliveCell(){
         int[] dimensions = {1,1};
         Board board = new Board(new ArrayList<>(List.of(new Cell(0,0))));
         consolePrinter.print(board, dimensions);
@@ -60,7 +60,7 @@ class ConsolePrinterTest {
     }
 
     @Test
-    void callingPrintPrintsPrintsMixedCellsByPeriodOrXAndSpaceBetweenAndOnThreeRows(){
+    void callingPrintPrintsAMixOfAliveAndDeadCellsByPeriodOrXAndSpaceBetweenAndOnThreeRows(){
         int[] dimensions = {3,3};
         Cell cell1 = new Cell(0,2);
         Cell cell2 = new Cell(1, 0);

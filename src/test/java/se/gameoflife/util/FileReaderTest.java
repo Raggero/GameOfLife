@@ -31,7 +31,7 @@ class FileReaderTest {
     }
 
     @Test
-    void callingReadFileWithCorrectFileReturnsList() {
+    void callingReadFileWithExistingFileReturnsList() {
         List<String> expectedResult = new ArrayList<>(List.of("1,1", ". . ."));
 
         assertThat(fileReader.readFile(file)).isEqualTo(expectedResult);

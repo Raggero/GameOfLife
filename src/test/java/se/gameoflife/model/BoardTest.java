@@ -55,7 +55,7 @@ class BoardTest {
     }
 
     @Test
-    void callingEqualsWithTwoListContainingSameListReturnsTrue() {
+    void callingEqualsWithTwoBoardContainingSameListReturnsTrue() {
         Cell cell1 = new Cell(1, 1);
         Cell cell2 = new Cell(1, 1);
         Board board1 = new Board(new ArrayList<>(List.of(cell1, cell2)));
@@ -70,7 +70,7 @@ class BoardTest {
     }
 
     @Test
-    void callingHashcodeOnTwoCellsWithSameParametersReturnsTrue() {
+    void callingHashcodeOnTwoBoardsContainingSameCellReturnsTrue() {
         Cell cell1 = new Cell(1, 1);
         Cell cell2 = new Cell(1, 1);
         Board board1 = new Board(new ArrayList<>(List.of(cell1, cell2)));
