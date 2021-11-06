@@ -22,7 +22,7 @@ public class Board {
 
     public int getCell(int row, int column) {
         return cellList.stream()
-                .filter(cell -> cell.row == row && cell.column == column)
+                .filter(cell -> cell.row() == row && cell.column() == column)
                 .map(i -> 1)
                 .findFirst()
                 .orElse(0);

@@ -17,7 +17,7 @@ public class GameBoard {
     private List<Cell> getSurvivingCells(Board board) {
         return board.getCellList().stream()
                 .filter(cell -> {
-                    int neighbors = getNeighbors(board, cell.getRow(), cell.getColumn());
+                    int neighbors = getNeighbors(board, cell.row(), cell.column());
                     return neighbors == 2 || neighbors == 3;
                 })
                 .collect(Collectors.toList());
