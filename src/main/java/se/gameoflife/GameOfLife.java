@@ -22,7 +22,13 @@ public class GameOfLife {
         List<String> fileList = fileReader.readFile(file);
         Board board = gameLoader.loadGame(fileList);
         int[] dimensions = gameLoader.getDimensions();
-        consolePrinter.print(board, dimensions);
-        gameBoard.getNextGeneration(board, dimensions);
+        playGameOfLife(board, dimensions);
+    }
+
+    private void playGameOfLife(Board board, int[] dimensions) {
+        for (int i = 0; i < 5; i++) {
+            consolePrinter.print(board, dimensions);
+            board = gameBoard.getNextGeneration(board, dimensions);
+        }
     }
 }
