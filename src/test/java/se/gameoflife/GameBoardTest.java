@@ -1,33 +1,37 @@
 package se.gameoflife;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class GameBoardTest {
+class GameBoardTest {
+
+    GameBoard gameBoard;
+
+    @BeforeEach
+    public void setUp() {
+        gameBoard = new GameBoard();
+    }
 
     @Test
     void callingGetNextGenerationWithNoAliveCellsReturnsNoAliveCells() {
         int[] dimensions = {1,1};
-        GameBoard gameBoard = new GameBoard();
 
-        Board inputBoard = new Board(new ArrayList<>());
-
-        Board expectedBoard = new Board(new ArrayList<>());
+        Board inputBoard = new Board();
+        Board expectedBoard = new Board();
         assertThat(gameBoard.getNextGeneration(inputBoard, dimensions)).isEqualTo(expectedBoard);
     }
 
     @Test
     void callingGetNextGenerationWithOneAliveCellReturnsNoAliveCells() {
         int[] dimensions = {1,1};
-        GameBoard gameBoard = new GameBoard();
 
         Board inputBoard = new Board(new ArrayList<>(List.of(new Cell(0, 0))));
 
-        Board expectedBoard = new Board(new ArrayList<>());
+        Board expectedBoard = new Board();
 
         assertThat(gameBoard.getNextGeneration(inputBoard, dimensions)).isEqualTo(expectedBoard);
     }
@@ -36,11 +40,10 @@ public class GameBoardTest {
     @Test
     void callingGetNextGenerationWithTwoAliveCellReturnsNoAliveCells() {
         int[] dimensions = {1,2};
-        GameBoard gameBoard = new GameBoard();
 
         Board inputBoard = new Board(new ArrayList<>(List.of(new Cell(0, 0), new Cell(1, 0))));
 
-        Board expectedBoard = new Board(new ArrayList<>());
+        Board expectedBoard = new Board();
 
         assertThat(gameBoard.getNextGeneration(inputBoard, dimensions)).isEqualTo(expectedBoard);
     }
@@ -48,7 +51,6 @@ public class GameBoardTest {
     @Test
     void callingGetNextGenerationWithThreeAliveCellsDiagonallyReturnsMiddleCellAlive() {
         int[] dimensions = {3,3};
-        GameBoard gameBoard = new GameBoard();
         Cell cell1 = new Cell(0, 2);
         Cell cell2 = new Cell(1, 1);
         Cell cell3 = new Cell(2, 0);
@@ -64,7 +66,6 @@ public class GameBoardTest {
     @Test
     void callingGetNextGenerationWithFourAliveCellsSeparatedReturnsNoALiveCells() {
         int[] dimensions = {3,3};
-        GameBoard gameBoard = new GameBoard();
         Cell cell1 = new Cell(0, 0);
         Cell cell2 = new Cell(0, 2);
         Cell cell3 = new Cell(2, 0);
@@ -72,7 +73,7 @@ public class GameBoardTest {
 
         Board inputBoard = new Board(new ArrayList<>(List.of(cell1, cell2, cell3, cell4)));
 
-        Board expectedBoard = new Board(new ArrayList<>());
+        Board expectedBoard = new Board();
 
         assertThat(gameBoard.getNextGeneration(inputBoard, dimensions)).isEqualTo(expectedBoard);
     }
@@ -80,7 +81,6 @@ public class GameBoardTest {
     @Test
     void callingGetNextGenerationWithThreeAliveCellsMakesOneCellComeAlive() {
         int[] dimensions = {3,3};
-        GameBoard gameBoard = new GameBoard();
         Cell cell1 = new Cell(0, 0);
         Cell cell2 = new Cell(0, 2);
         Cell cell3 = new Cell(0, 1);
@@ -96,7 +96,6 @@ public class GameBoardTest {
     @Test
     void callingGetNextGenerationWithAllAliveCellsOnBoardReturnsExpectedResult() {
         int[] dimensions = {3,3};
-        GameBoard gameBoard = new GameBoard();
         Cell cell1 = new Cell(0, 0);
         Cell cell2 = new Cell(0, 1);
         Cell cell3 = new Cell(0, 2);
@@ -117,7 +116,6 @@ public class GameBoardTest {
     @Test
     void callingGetNextGenerationWithFiveAliveCellsReturnsExpectedResult() {
         int[] dimensions = {3,3};
-        GameBoard gameBoard = new GameBoard();
         Cell cell1 = new Cell(0, 0);
         Cell cell2 = new Cell(0, 1);
         Cell cell3 = new Cell(0, 2);
