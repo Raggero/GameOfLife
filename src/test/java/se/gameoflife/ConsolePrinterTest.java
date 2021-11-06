@@ -29,31 +29,31 @@ public class ConsolePrinterTest {
     @Test
     void callingPrintPrintsDotForDead(){
         int[] dimensions = {1,1};
-        ConsolePrinter consolePrinter = new ConsolePrinter(dimensions);
+        ConsolePrinter consolePrinter = new ConsolePrinter();
         Board board = new Board(new ArrayList<>());
-        consolePrinter.print(board);
+        consolePrinter.print(board, dimensions);
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo(".");
     }
 
     @Test
     void callingPrintPrintsXForAlive(){
         int[] dimensions = {1,1};
-        ConsolePrinter consolePrinter = new ConsolePrinter(dimensions);
+        ConsolePrinter consolePrinter = new ConsolePrinter();
         Board board = new Board(new ArrayList<>(List.of(new Cell(0,0))));
-        consolePrinter.print(board);
+        consolePrinter.print(board, dimensions);
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo("x");
     }
 
     @Test
     void callingPrintPrintsThreeDeadCellsByPeriodAndSpaceBetween(){
         int[] dimensions = {1,3};
-        ConsolePrinter consolePrinter = new ConsolePrinter(dimensions);
+        ConsolePrinter consolePrinter = new ConsolePrinter();
         System.setOut(new PrintStream(outputStreamCaptor));
 
         Board board = new Board(new ArrayList<>());
 
         String expectedOutput = ". . .";
-        consolePrinter.print(board);
+        consolePrinter.print(board, dimensions);
 
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo(expectedOutput);
     }
@@ -61,7 +61,7 @@ public class ConsolePrinterTest {
     @Test
     void callingPrintPrintsPrintsMixedCellsByPeriodOrXAndSpaceBetweenAndOnThreeRows(){
         int[] dimensions = {3,3};
-        ConsolePrinter consolePrinter = new ConsolePrinter(dimensions);
+        ConsolePrinter consolePrinter = new ConsolePrinter();
         System.setOut(new PrintStream(outputStreamCaptor));
 
         Cell cell1 = new Cell(0,2);
@@ -73,7 +73,7 @@ public class ConsolePrinterTest {
         String expectedOutput = ". . x " + System.lineSeparator() +
                 "x . . " + System.lineSeparator() +
                 ". x .";
-        consolePrinter.print(board);
+        consolePrinter.print(board, dimensions);
 
         assertThat(outputStreamCaptor.toString().trim()).hasToString(expectedOutput);
     }
