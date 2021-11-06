@@ -19,6 +19,7 @@ public class GameOfLife {
     public void startGame() {
         List<String> fileList = fileReader.readFile(file);
         Board board = gameLoader.loadGame(fileList);
-        consolePrinter.print(board, gameLoader.getDimensions());
+        int[] dimensions = gameLoader.getDimensions();
+        consolePrinter.print(board, dimensions);
     }
 }

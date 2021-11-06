@@ -35,8 +35,14 @@ public class GameOfLifeTest {
     @Captor
     ArgumentCaptor<ArrayList<String>> listArgumentCaptor;
 
+    @Captor
+    ArgumentCaptor<Board> boardCaptor;
+
+    @Mock
+    ArgumentCaptor<Object> arrayCaptor;
+
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         gameOfLife = new GameOfLife(mockedFileReader, mockedGameLoader, mockedConsolePrinter);
     }
 
@@ -85,6 +91,26 @@ public class GameOfLifeTest {
         gameOfLife.startGame();
 
         verify(mockedConsolePrinter).print(Mockito.any(), Mockito.any());
+    }
+
+    @Test
+    void callingStartGameCallsPrintWithCorrectArguments() {
+        List<String> strings = new ArrayList<>(List.of("1,3", "x . x"));
+        Board board = new Board();
+        int[] dimensions = {3, 3};
+        when(mockedFileReader.readFile(Mockito.anyString())).thenReturn(strings);
+        when(mockedGameLoader.loadGame(strings)).thenReturn(board);
+        when(mockedGameLoader.getDimensions()).thenReturn(dimensions);
+        doNothing().when(mockedConsolePrinter).print(Mockito.any(), Mockito.any());
+        gameOfLife.startGame();
+
+        ArgumentCaptor<Object> arrayCaptor = ArgumentCaptor.forClass(int[].class);
+
+        verify(mockedConsolePrinter).print(boardCaptor.capture(), (int[]) arrayCaptor.capture());
+        Board capturedArgument = boardCaptor.getValue();
+        int[] secondCapturedArgument = (int[]) arrayCaptor.getValue();
+        assertThat(capturedArgument).isEqualTo(board);
+        assertThat(secondCapturedArgument).isEqualTo(dimensions);
     }
 
 
