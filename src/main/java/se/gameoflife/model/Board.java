@@ -20,13 +20,6 @@ public class Board {
         cellList.add(cell);
     }
 
-    public Cell getCell(int row, int column) {
-        return cellList.stream()
-                .filter(cell -> cell.row == row && cell.column == column)
-                .findFirst()
-                .orElse(null);
-    }
-
     public int countCell(int row, int column) {
         return cellList.stream()
                 .filter(cell -> cell.row == row && cell.column == column)
@@ -50,12 +43,5 @@ public class Board {
     @Override
     public int hashCode() {
         return Objects.hash(cellList);
-    }
-
-    @Override
-    public String toString() {
-        return "Board{" +
-                "cellList=" + cellList +
-                '}';
     }
 }

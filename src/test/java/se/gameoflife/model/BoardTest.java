@@ -27,20 +27,6 @@ class BoardTest {
     }
 
     @Test
-    void callingGetCellWithCorrectCoordinatesReturnsCell() {
-        Cell cell = new Cell(1, 1);
-        Board board = new Board(new ArrayList<>(List.of(cell)));
-        assertThat(board.getCell(1, 1)).isEqualTo(cell);
-    }
-
-    @Test
-    void callingGetCellWithWrongCoordinatesReturnsNull() {
-        Cell cell = new Cell(1, 1);
-        Board board = new Board(new ArrayList<>(List.of(cell)));
-        assertThat(board.getCell(2, 2)).isNull();
-    }
-
-    @Test
     void callingCountCellWithCorrectCoordinatesReturnsOne() {
         Cell cell = new Cell(1, 1);
         Board board = new Board(new ArrayList<>(List.of(cell)));
