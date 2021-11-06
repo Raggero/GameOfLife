@@ -1,4 +1,6 @@
-package se.gameoflife;
+package se.gameoflife.util;
+
+import se.gameoflife.model.Board;
 
 public class ConsolePrinter {
 

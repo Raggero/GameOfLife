@@ -1,15 +1,14 @@
-package se.gameoflife;
+package se.gameoflife.model;
 
 import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BoardTest {
+class BoardTest {
 
 
     @Test

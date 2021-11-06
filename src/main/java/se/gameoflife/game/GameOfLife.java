@@ -1,5 +1,8 @@
-package se.gameoflife;
+package se.gameoflife.game;
 
+import se.gameoflife.model.Board;
+import se.gameoflife.util.ConsolePrinter;
+import se.gameoflife.util.FileReader;
 import java.util.List;
 
 public class GameOfLife {

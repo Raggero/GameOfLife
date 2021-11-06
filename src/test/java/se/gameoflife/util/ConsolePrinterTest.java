@@ -1,8 +1,10 @@
-package se.gameoflife;
+package se.gameoflife.util;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import se.gameoflife.model.Board;
+import se.gameoflife.model.Cell;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;

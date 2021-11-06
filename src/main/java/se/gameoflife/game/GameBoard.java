@@ -1,4 +1,7 @@
-package se.gameoflife;
+package se.gameoflife.game;
+
+import se.gameoflife.model.Board;
+import se.gameoflife.model.Cell;
 
 public class GameBoard {
 

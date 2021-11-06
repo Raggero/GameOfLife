@@ -1,4 +1,4 @@
-package se.gameoflife;
+package se.gameoflife.util;
 
 import java.io.IOException;
 import java.nio.file.Files;

@@ -1,7 +1,9 @@
-package se.gameoflife;
+package se.gameoflife.game;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import se.gameoflife.model.Board;
+import se.gameoflife.model.Cell;
 import java.util.ArrayList;
 import java.util.List;
 

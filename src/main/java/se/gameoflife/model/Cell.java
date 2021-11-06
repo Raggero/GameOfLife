@@ -1,4 +1,4 @@
-package se.gameoflife;
+package se.gameoflife.model;
 
 import java.util.Objects;
 

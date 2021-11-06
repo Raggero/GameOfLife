@@ -1,4 +1,4 @@
-package se.gameoflife;
+package se.gameoflife.game;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,6 +8,9 @@ import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import se.gameoflife.model.Board;
+import se.gameoflife.util.ConsolePrinter;
+import se.gameoflife.util.FileReader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class GameOfLifeTest {
+class GameOfLifeTest {
 
     GameOfLife gameOfLife;
 
