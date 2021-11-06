@@ -10,22 +10,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class GameLoaderTest {
 
     @Test
-    void callingLoadGameReturnsDimensionsToOneOne() {
+    void callingLoadDimensionsReturnsDimensionsToOneOne() {
         GameLoader gameLoader = new GameLoader();
         List<String> strings = new ArrayList<>(List.of("1,1"));
         int[] expected = {1,1};
-        int[] dimensions = gameLoader.loadGame(strings);
+        int[] dimensions = gameLoader.loadDimensions(strings);
         assertThat(dimensions).isEqualTo(expected);
     }
 
     @Test
-    void callingLoadGameReturnsDimensionsToThreeThree() {
+    void callingLoadDimensionsReturnsDimensionsToThreeThree() {
         GameLoader gameLoader = new GameLoader();
         List<String> strings = new ArrayList<>(List.of("3,3"));
         int[] expected = {3,3 };
-        int[] dimensions = gameLoader.loadGame(strings);
+        int[] dimensions = gameLoader.loadDimensions(strings);
         assertThat(dimensions).isEqualTo(expected);
     }
+
+
 
 
 }
