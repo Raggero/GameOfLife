@@ -122,5 +122,26 @@ public class GameOfLifeTest {
         verify(mockedGameBoard).getNextGeneration(Mockito.any(), Mockito.any());
     }
 
+    @Test
+    void callingStartGameCallsGetNextGenerationWithCorrectArguments() {
+        String path = "src/main/resources/gameoflife.txt";
+        List<String> strings = new ArrayList<>(List.of("1,3", "x . x"));
+        Board board = new Board();
+        Board board2 = new Board();
+        int[] dimensions = {3, 3};
+        when(mockedFileReader.readFile(path)).thenReturn(strings);
+        when(mockedGameLoader.loadGame(strings)).thenReturn(board);
+        when(mockedGameLoader.getDimensions()).thenReturn(dimensions);
+        doNothing().when(mockedConsolePrinter).print(Mockito.any(), Mockito.any());
+        when(mockedGameBoard.getNextGeneration(board, dimensions)).thenReturn(board2);
+        gameOfLife.startGame();
+
+        verify(mockedGameBoard).getNextGeneration(boardCaptor.capture(), (int[]) arrayCaptor.capture());
+        Board capturedArgument = boardCaptor.getValue();
+        int[] secondCapturedArgument = (int[]) arrayCaptor.getValue();
+        assertThat(capturedArgument).isEqualTo(board);
+        assertThat(secondCapturedArgument).isEqualTo(dimensions);
+    }
+
 
 }
