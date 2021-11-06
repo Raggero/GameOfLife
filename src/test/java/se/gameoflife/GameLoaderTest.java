@@ -15,7 +15,7 @@ public class GameLoaderTest {
         List<String> strings = new ArrayList<>(List.of("1,1"));
         int[] expected = {1,1};
         gameLoader.loadGame(strings);
-        assertThat(gameLoader.dimensions).isEqualTo(expected);
+        assertThat(gameLoader.getDimensions()).isEqualTo(expected);
     }
 
     @Test
@@ -24,7 +24,7 @@ public class GameLoaderTest {
         List<String> strings = new ArrayList<>(List.of("3,3"));
         int[] expected = {3,3 };
         gameLoader.loadGame(strings);
-        assertThat(gameLoader.dimensions).isEqualTo(expected);
+        assertThat(gameLoader.getDimensions()).isEqualTo(expected);
     }
 
     @Test

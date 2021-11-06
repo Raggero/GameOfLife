@@ -5,7 +5,7 @@ import java.util.List;
 
 public class GameLoader {
 
-    int[] dimensions;
+     private int[] dimensions;
 
     public Board loadGame(List<String> stringList) {
         loadDimensions(stringList);
@@ -33,5 +33,9 @@ public class GameLoader {
                 .mapToInt(Integer::parseInt)
                 .toArray();
 
+    }
+
+    public int[] getDimensions() {
+        return dimensions;
     }
 }
