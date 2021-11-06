@@ -18,8 +18,11 @@ class FileReaderTest {
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
+    FileReader fileReader;
+
     @BeforeEach
     public void setUp() {
+        fileReader = new FileReader();
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
@@ -30,7 +33,6 @@ class FileReaderTest {
 
     @Test
     void callingReadFileWithCorrectFileReturnsList() {
-        FileReader fileReader = new FileReader();
         List<String> expectedResult = new ArrayList<>(List.of("1,1", ". . ."));
 
         assertThat(fileReader.readFile(file)).isEqualTo(expectedResult);
@@ -38,7 +40,6 @@ class FileReaderTest {
 
     @Test
     void callingReadFileWithNoFileReturnsList() {
-        FileReader fileReader = new FileReader();
         fileReader.readFile("Wrong");
 
         String expectedOutput = "File missing, can't start the game";
