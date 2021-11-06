@@ -21,8 +21,8 @@ public class BoardTest {
 
     @Test
     void callingAddWithACellAddsCellToList() {
-        Board board = new Board();
         Cell cell = new Cell(1, 1);
+        Board board = new Board();
         board.add(cell);
         assertThat(board.getCellList()).contains(cell);
     }
