@@ -4,26 +4,23 @@ import se.gameoflife.model.Board;
 import se.gameoflife.model.Cell;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GameBoard {
 
     public Board getNextGeneration(Board board, int[] dimensions) {
-        List<Cell> nextGeneration = new ArrayList<>();
-        getSurvivingCells(board, nextGeneration);
+        List<Cell> nextGeneration = getSurvivingCells(board);
         getBirths(board, dimensions, nextGeneration);
         return new Board(nextGeneration);
     }
-    private void getSurvivingCells(Board board, List<Cell> nextGeneration) {
-        for (int i = 0; i < board.getCellList().size(); i++) {
-            int neighbours = getNeighbors(board, board.getCellList().get(i).getRow(), board.getCellList().get(i).getColumn());
-            addSurvivingCell(board.getCellList().get(i), neighbours, nextGeneration);
-        }
-    }
 
-    private void addSurvivingCell(Cell cell, int neighbours, List<Cell> nextGeneration) {
-        if (neighbours == 2 || neighbours == 3) {
-            nextGeneration.add(cell);
-        }
+    private List<Cell> getSurvivingCells(Board board){
+        return board.getCellList().stream()
+                .filter(cell -> {
+                    int neighbors = getNeighbors(board, cell.getRow(), cell.getColumn());
+                    return neighbors == 2 || neighbors == 3;
+                })
+                .collect(Collectors.toList());
     }
 
     private void getBirths(Board board, int[] dimensions, List<Cell> nextGen) {
