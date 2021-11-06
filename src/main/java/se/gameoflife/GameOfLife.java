@@ -9,11 +9,13 @@ public class GameOfLife {
     private final FileReader fileReader;
     private final GameLoader gameLoader;
     private final ConsolePrinter consolePrinter;
+    private final GameBoard gameBoard;
 
-    public GameOfLife(FileReader fileReader, GameLoader gameLoader, ConsolePrinter consolePrinter) {
+    public GameOfLife(FileReader fileReader, GameLoader gameLoader, ConsolePrinter consolePrinter, GameBoard gameBoard) {
         this.fileReader = fileReader;
         this.gameLoader = gameLoader;
         this.consolePrinter = consolePrinter;
+        this.gameBoard = gameBoard;
     }
 
     public void startGame() {
@@ -21,5 +23,6 @@ public class GameOfLife {
         Board board = gameLoader.loadGame(fileList);
         int[] dimensions = gameLoader.getDimensions();
         consolePrinter.print(board, dimensions);
+        gameBoard.getNextGeneration(board, dimensions);
     }
 }

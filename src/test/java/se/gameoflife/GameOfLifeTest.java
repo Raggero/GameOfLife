@@ -29,6 +29,9 @@ public class GameOfLifeTest {
     @Mock
     ConsolePrinter mockedConsolePrinter;
 
+    @Mock
+    GameBoard mockedGameBoard;
+
     @Captor
     ArgumentCaptor<String> stringCaptor;
 
@@ -38,12 +41,12 @@ public class GameOfLifeTest {
     @Captor
     ArgumentCaptor<Board> boardCaptor;
 
-    @Mock
+    @Captor
     ArgumentCaptor<Object> arrayCaptor;
 
     @BeforeEach
     public void setUp() {
-        gameOfLife = new GameOfLife(mockedFileReader, mockedGameLoader, mockedConsolePrinter);
+        gameOfLife = new GameOfLife(mockedFileReader, mockedGameLoader, mockedConsolePrinter, mockedGameBoard);
     }
 
     @Test
@@ -104,13 +107,19 @@ public class GameOfLifeTest {
         doNothing().when(mockedConsolePrinter).print(Mockito.any(), Mockito.any());
         gameOfLife.startGame();
 
-        ArgumentCaptor<Object> arrayCaptor = ArgumentCaptor.forClass(int[].class);
-
         verify(mockedConsolePrinter).print(boardCaptor.capture(), (int[]) arrayCaptor.capture());
         Board capturedArgument = boardCaptor.getValue();
         int[] secondCapturedArgument = (int[]) arrayCaptor.getValue();
         assertThat(capturedArgument).isEqualTo(board);
         assertThat(secondCapturedArgument).isEqualTo(dimensions);
+    }
+
+    @Test
+    void callingStartGameCallsGetNextGeneration() {
+        when(mockedGameBoard.getNextGeneration(Mockito.any(), Mockito.any())).thenReturn(Mockito.any());
+        gameOfLife.startGame();
+
+        verify(mockedGameBoard).getNextGeneration(Mockito.any(), Mockito.any());
     }
 
 

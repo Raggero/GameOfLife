@@ -2,7 +2,7 @@ package se.gameoflife;
 
 public class GameBoard {
 
-    Board nextGeneration;
+    private Board nextGeneration;
 
     public Board getNextGeneration(Board cellBoard, int[] dimensions) {
         nextGeneration = new Board();
