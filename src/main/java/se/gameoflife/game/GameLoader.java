@@ -13,30 +13,33 @@ public class GameLoader {
 
     public Board loadGame(List<String> stringList) {
         loadDimensions(stringList);
-        List<Cell> cellList = new ArrayList<>();
-        if (stringList.size() > 1) {
-            loadBoard(stringList, cellList);
-        }
+        List<Cell> cellList = loadBoard(stringList);
         return new Board(cellList);
     }
 
-    private void loadBoard(List<String> stringList, List<Cell> cellList) {
-        for (int i = 0; i < dimensions[0]; i++) {
-            String[] cell = stringList.get(i + 1).trim().split(" ");
-            for (int j = 0; j < dimensions[1]; j++) {
-                if (cell[j].equals("x")) {
-                    cellList.add(new Cell(i, j));
+    private void loadDimensions(List<String> stringList) {
+        dimensions = Arrays.stream(splitList(stringList, 0, ","))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+    }
+
+    private List<Cell> loadBoard(List<String> stringList) {
+        List<Cell> cellList = new ArrayList<>();
+        if (stringList.size() > 1) {
+            for (int i = 0; i < dimensions[0]; i++) {
+                String[] cell = splitList(stringList, i + 1, " ");
+                for (int j = 0; j < dimensions[1]; j++) {
+                    if (cell[j].equals("x")) {
+                        cellList.add(new Cell(i, j));
+                    }
                 }
             }
         }
+        return cellList;
     }
 
-    private void loadDimensions(List<String> stringList) {
-        String[] stringDimensions = stringList.get(0).split(",");
-        dimensions = Arrays.stream(stringDimensions)
-                .mapToInt(Integer::parseInt)
-                .toArray();
-
+    private String[] splitList(List<String> stringList, int index, String s) {
+        return stringList.get(index).trim().split(s);
     }
 
     public int[] getDimensions() {
