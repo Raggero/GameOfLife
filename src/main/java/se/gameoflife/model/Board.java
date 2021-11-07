@@ -16,10 +16,6 @@ public class Board {
         this.cellList = new ArrayList<>();
     }
 
-    public void addCell(Cell cell) {
-        cellList.add(cell);
-    }
-
     public int getCell(int row, int column) {
         return cellList.stream()
                 .filter(cell -> cell.row() == row && cell.column() == column)

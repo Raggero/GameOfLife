@@ -18,14 +18,6 @@ class BoardTest {
     }
 
     @Test
-    void callingAddCellWithCellAddsCellToList() {
-        Cell cell = new Cell(1, 1);
-        Board board = new Board();
-        board.addCell(cell);
-        assertThat(board.getCellList()).contains(cell);
-    }
-
-    @Test
     void callingGetCellWithCorrectCoordinatesReturnsOne() {
         Cell cell = new Cell(1, 1);
         Board board = new Board(new ArrayList<>(List.of(cell)));
