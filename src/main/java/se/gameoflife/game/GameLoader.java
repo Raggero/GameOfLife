@@ -3,6 +3,7 @@ package se.gameoflife.game;
 import se.gameoflife.model.Board;
 import se.gameoflife.model.Cell;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,19 +13,19 @@ public class GameLoader {
 
     public Board loadGame(List<String> stringList) {
         loadDimensions(stringList);
-        Board board = new Board();
+        List<Cell> cellList = new ArrayList<>();
         if (stringList.size() > 1) {
-            loadBoard(stringList, board);
+            loadBoard(stringList, cellList);
         }
-        return board;
+        return new Board(cellList);
     }
 
-    private void loadBoard(List<String> stringList, Board board) {
+    private void loadBoard(List<String> stringList, List<Cell> cellList) {
         for (int i = 0; i < dimensions[0]; i++) {
             String[] cell = stringList.get(i + 1).trim().split(" ");
             for (int j = 0; j < dimensions[1]; j++) {
                 if (cell[j].equals("x")) {
-                    board.addCell(new Cell(i, j));
+                    cellList.add(new Cell(i, j));
                 }
             }
         }
