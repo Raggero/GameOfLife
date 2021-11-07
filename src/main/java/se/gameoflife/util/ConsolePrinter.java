@@ -11,6 +11,7 @@ public class ConsolePrinter {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
     private String printCell(Board board, int i, int j) {
